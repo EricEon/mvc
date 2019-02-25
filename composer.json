@@ -1,0 +1,20 @@
+{
+    "name": "flux/login",
+    "description": "A simple login form with server side code for connection",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "flux",
+            "email": "rasengan501@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+        
+    },
+    "minimum-stability": "dev"
+    
+}

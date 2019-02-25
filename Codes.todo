@@ -1,0 +1,8 @@
+@Todo:☐ Additions
+    ✔ Add the zend opcache and session functions. @done(19-02-07 15:50)
+    ✔ Implement a notification. @done(19-02-07 19:14)
+    ☐ Refactor
+        ☐ Refactor the router to allow use of named variables in Route uri.
+        ☐ Create a trait or an abstract class for QueryBuilder.php.
+        ☐ Create Models where needed that implement their own version of QueryBuilder.
+        ✔ Create a session class. @done(19-02-07 19:14)

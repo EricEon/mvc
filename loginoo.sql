@@ -1,0 +1,11 @@
+CREATE TABLE `users` (
+	`id` INT(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(50) NOT NULL,
+	`email` VARCHAR(50) NOT NULL UNIQUE,
+	`password` VARCHAR(255) NOT NULL,
+	`activation_code` VARCHAR(255) NULL,
+	`activatation_confirm` TINYINT NOT NULL DEFAULT '0',
+	`date_created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)
+COLLATE='latin1_swedish_ci'
+;
