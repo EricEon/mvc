@@ -34,5 +34,11 @@ class Request
     public static function host(){
         return $_SERVER['SERVER_NAME'];
     }
+
+    public static function is(String $url){
+        if($_SERVER['REQUEST_URI'] === $url){
+            return true;
+        }
+    }
 }
 

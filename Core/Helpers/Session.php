@@ -65,8 +65,9 @@ class Session
         if (isset($_SESSION['message'])) {
             //echo $_SESSION['status'];
             echo $_SESSION['message'];
-            unset($_SESSION['message']);
-            unset($_SESSION['status']);
+            //unset($_SESSION['message']);
+            //unset($_SESSION['status']);
+            session_destroy();
         }
     }
 

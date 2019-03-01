@@ -85,3 +85,11 @@ input:focus{
     background-color: #74d179;
     color: rgb(1, 58, 1);
 }
+.alert-info{
+    background-color: #4f97da;
+    color: rgb(2, 77, 128);
+}
+.alert-warning{
+    background-color: #f8f191;
+    color: rgb(109, 121, 1);
+}

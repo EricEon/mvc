@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Flux
- * Date: 2/6/2019
- * Time: 6:32 PM
- */
-
 namespace Flux\Controller;
+
+use Flux\Core\Helpers\Session;
 
 class SiteController
 {
@@ -23,5 +18,10 @@ class SiteController
     public function about()
     {
         return view('about');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');
     }
 }

@@ -1,23 +1,26 @@
-<?php include 'header.php';?>
+<?php include 'header.php';
+use Flux\Core\Helpers\Session;
+?>
 
 <div class="container">
+<?php if(isset($_SESSION['message'])): ?>
+    <div class="alert alert-<?= $_SESSION['status'] ?>">
+        <p><?php Session::display()?></p>
+    </div>
+<?php endif; ?>
     <div class="row">
         <div class="col">
-            <form action="#" method="get">
+            <form action="/login" method="post">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name">
+                    <label for="email">EMAIL</label>
+                    <input type="text" name="email" id="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="tel_no">Telephone</label>
-                    <input type="text" name="tel_no" id="tel_no">
+                    <label for="password">PASSWORD</label>
+                    <input type="password" name="password" id="password" required>
                 </div>
                 <div class="form-group">
-                    <label for="date_created">Date</label>
-                    <input type="date" name="date_created" id="date_created">
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Enter" class="btn">
+                    <input type="submit" value="Login" name="submit">
                 </div>
 
             </form>

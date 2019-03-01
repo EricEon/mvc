@@ -12,15 +12,15 @@ class Connector
      */
     public static function connect()
     {
-        $dir = require "Connection.php";
-//        $dir = 'Core/Database/Connection.php';
-//         if(!file_exists($dir)){
-//             echo "check file availability";
-//         }else{
-//             print_r($dir);
-//         }
+        //$dir = require "Connection.php";
+        $db_driver = $_ENV['DB_TYPE'];
+        $db_host = $_ENV['DB_HOST'];
+        $db_name = $_ENV['DB_NAME'];
+        $db_username = $_ENV['DB_USERNAME'];
+        $db_password = $_ENV['DB_PASSWORD'];
+
         try {
-            $db = new \PDO($mysql['db_driver'].':host='.$mysql['db_host'].';'.'dbname='.$mysql['db_name'],$mysql['db_username'],$mysql['db_password']);
+            $db = new \PDO("$db_driver:host=$db_host;"."dbname=$db_name",$db_username,$db_password);
             //var_dump($db);
             $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             if($db){
@@ -30,7 +30,6 @@ class Connector
         } catch (\PDOException $e) {
             //Send a generic message to the user
             echo $e->getMessage();
-            //echo "There is a problem, check the log files.";
             
             //Logger::write($e->getMessage());
         }

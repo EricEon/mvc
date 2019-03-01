@@ -12,7 +12,7 @@ class RegistrationController extends Controller
    
     public function register()
     {
-        $data = Auth::register('users',Request::all());
+        Auth::register('users',Request::all());
         return view('register');
     }
 

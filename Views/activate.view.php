@@ -1,4 +1,6 @@
-<?php include 'header.php';?>
+<?php include 'header.php';
+use Flux\Core\Helpers\Session;
+?>
 
 <div class="container">
 <?php if(isset($_SESSION['message'])): ?>
@@ -12,12 +14,16 @@
                 <div class="form-group">
                 <?php if(isset($data)): ?>
                     <input type="text" value="<?= $data['email']; ?>" name="email" hidden>
-                <?php endif; ?>
+                <?php elseif(!isset($data)): ?>
+                    <input type="text" value="" name="email" hidden>
+                <?php endif;?>
                 </div>
                 <div class="form-group">
                 <?php if(isset($data)): ?>
                     <input type="text" value="<?= $data['activation_code']; ?>" name="activation_code" hidden>
-                <?php endif; ?>
+                <?php elseif(!isset($data)): ?>
+                    <input type="text" value="" name="activation_code" hidden>
+                <?php endif;?>
                 </div>
                 <div class="form-group">
                     <label for="activation">Activate User

@@ -33,8 +33,8 @@ function mailActivation(String $to, String $subject, String $message){
 /**Redirects to a specified page
  * @param String $location
  */
-function redirect(String $location){
-    header("Location:".$location,203);
+function redirect(String $location, $refresh=1){
+    header("Location:".$location,"Refresh:".$refresh);
     exit;
 }
 
