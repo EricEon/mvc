@@ -389,14 +389,14 @@ class AuthController
             var_dump($count);
             if ($count > 0) {
                 if (!password_verify($password, $password_confirm)) {
-                    Session::create('warning','Check Password!!');
+                    Session::create('warning', 'Check Password!!');
                     return redirect('/');
-                    
+
                 }
-                
+
                 return $count;
             }
-            Session::create('warning','Check Email!!');
+            Session::create('warning', 'Check Email!!');
             return redirect('/');
 
         } catch (\PDOException $th) {

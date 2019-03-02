@@ -21,8 +21,7 @@ class LoginController
 
     public function logout()
     {
-        if (session_status() == PHP_SESSION_ACTIVE) 
-        {
+        if (session_status() == PHP_SESSION_ACTIVE) {
             session_destroy();
         }
         return redirect('/');

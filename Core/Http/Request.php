@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Flux
- * Date: 2/6/2019
- * Time: 6:04 PM
- */
 
 namespace Flux\Core\Http;
-
 
 class Request
 {
@@ -21,7 +14,8 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
-    public static function all(){
+    public static function all()
+    {
         if (isset($_POST['submit'])) {
             $post = $_POST;
             unset($post['submit']);
@@ -31,14 +25,15 @@ class Request
         exit;
     }
 
-    public static function host(){
+    public static function host()
+    {
         return $_SERVER['SERVER_NAME'];
     }
 
-    public static function is(String $url){
-        if($_SERVER['REQUEST_URI'] === $url){
+    public static function is(String $url)
+    {
+        if ($_SERVER['REQUEST_URI'] === $url) {
             return true;
         }
     }
 }
-

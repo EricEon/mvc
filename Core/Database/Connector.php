@@ -2,10 +2,8 @@
 
 namespace Flux\Core\Database;
 
-
 class Connector
 {
-
 
     /**
      * @return \PDO
@@ -20,17 +18,17 @@ class Connector
         $db_password = $_ENV['DB_PASSWORD'];
 
         try {
-            $db = new \PDO("$db_driver:host=$db_host;"."dbname=$db_name",$db_username,$db_password);
+            $db = new \PDO("$db_driver:host=$db_host;" . "dbname=$db_name", $db_username, $db_password);
             //var_dump($db);
             $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            if($db){
-                 return $db;
+            if ($db) {
+                return $db;
             }
-           
+
         } catch (\PDOException $e) {
             //Send a generic message to the user
             echo $e->getMessage();
-            
+
             //Logger::write($e->getMessage());
         }
     }

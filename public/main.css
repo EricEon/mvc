@@ -1,58 +1,69 @@
-*{
+* {
     /* outline: 1px solid grey; */
     font-family: sans-serif;
     font-size: medium;
     box-sizing: border-box;
 }
-body{
+
+body {
     margin: 0;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
-.navigation{
+.navigation {
     background-color: darkgray;
 
 }
-.nav-list{
-    margin:0;
+
+.nav-list {
+    margin: 0;
     padding: 8px;
     display: flex;
     justify-content: space-around;
 }
-.nav-item{
+
+.nav-item {
     list-style: none;
 }
-.container{
+
+.container {
     max-width: 1600px;
     margin-right: auto;
-    margin-left:auto;
+    margin-left: auto;
 }
-.row{
+
+.row {
     display: flex;
     justify-content: space-around;
     margin-right: auto;
-    margin-left:auto;
+    margin-left: auto;
 }
-.col{
+
+.col {
     width: 50%;
 }
-.form-group{
+
+.form-group {
     display: flex;
     flex-direction: column;
     /*align-items: center;*/
     width: 100%;
     margin-top: 2rem;
 }
-.form-group>label{
+
+.form-group>label {
     font-weight: bold;
-text-align: center;
+    text-align: center;
 }
-input{
+
+input {
     padding: 6px 4px;
 }
-input[type="submit"]{
+
+input[type="submit"] {
     margin: auto;
     text-align: center;
     padding: 9px;
@@ -61,15 +72,15 @@ input[type="submit"]{
     background-color: #558b2f;
     width: 80px;
     border-radius: 5px;
-    cursor:pointer;
+    cursor: pointer;
     color: whitesmoke;
 }
 
-input:focus{
+input:focus {
     outline: 1.5px solid rgb(34, 82, 240) !important;
 }
 
-.alert{
+.alert {
     width: 50%;
     margin-top: 20px;
     margin-left: auto;
@@ -77,19 +88,23 @@ input:focus{
     text-align: center;
     padding: 10px;
 }
-.alert-danger{
+
+.alert-danger {
     background-color: #e06161;
     color: rgb(92, 2, 2);
 }
-.alert-success{
+
+.alert-success {
     background-color: #74d179;
     color: rgb(1, 58, 1);
 }
-.alert-info{
+
+.alert-info {
     background-color: #4f97da;
     color: rgb(2, 77, 128);
 }
-.alert-warning{
+
+.alert-warning {
     background-color: #f8f191;
     color: rgb(109, 121, 1);
 }

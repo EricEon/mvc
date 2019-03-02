@@ -2,33 +2,30 @@
 
 namespace Flux\Core\Database;
 
-use Flux\Core\Helpers\Mailer;
-use Flux\Core\Helpers\Session;
 use Flux\Core\Database\Connector as Db;
+use Flux\Core\Helpers\Session;
 
 class QueryBuilder implements DataQueryTrait
 {
     /**
-     * @var		string	$table
+     * @var        string    $table
      */
     public $table = '';
 
     /**
-     * @var		array	$data
+     * @var        array    $data
      */
     public $data = [];
-
-
 
     /**
      * __construct.
      *
-     * @author	eonflux
-     * @since	v0.0.1
-     * @version	v1.0.0	Sunday, February 24th, 2019.
-     * @access	public
-     * @param	mixed	$con	Default: null
-     * @return	void
+     * @author    eonflux
+     * @since    v0.0.1
+     * @version    v1.0.0    Sunday, February 24th, 2019.
+     * @access    public
+     * @param    mixed    $con    Default: null
+     * @return    void
      */
     public function __construct($con = null)
     {
@@ -39,12 +36,12 @@ class QueryBuilder implements DataQueryTrait
     /**
      * table.
      *
-     * @author	eonflux
-     * @since	v0.0.1
-     * @version	v1.0.0	Sunday, February 24th, 2019.
-     * @access	public
-     * @param	string	$table	
-     * @return	mixed
+     * @author    eonflux
+     * @since    v0.0.1
+     * @version    v1.0.0    Sunday, February 24th, 2019.
+     * @access    public
+     * @param    string    $table
+     * @return    mixed
      */
     public function table(String $table)
     {
@@ -58,12 +55,12 @@ class QueryBuilder implements DataQueryTrait
     /**
      * create.
      *
-     * @author	eonflux
-     * @since	v0.0.1
-     * @version	v1.0.0	Sunday, February 24th, 2019.
-     * @access	public
-     * @param	array	$data	
-     * @return	void
+     * @author    eonflux
+     * @since    v0.0.1
+     * @version    v1.0.0    Sunday, February 24th, 2019.
+     * @access    public
+     * @param    array    $data
+     * @return    void
      */
     public function create(array $data)
     {
@@ -73,13 +70,13 @@ class QueryBuilder implements DataQueryTrait
         $prepVal = array();
 
         $email = $data['email'];
-        
+
         //var_dump($data);
         if (!is_array($data) && empty($data)) {
             $error = new \PDOException("Values passed must be of type array");
             $error->getMessage();
         }
-        
+
         /*
          *The foreach loop splits the array given into key and value for each index.
          * The keys are separated into a $keys array, the same is done to the values.
@@ -127,8 +124,6 @@ class QueryBuilder implements DataQueryTrait
             Session::create('danger', 'Unsuccessful Process');
         }
 
-
     }
-
 
 }
