@@ -321,11 +321,9 @@ class AuthController
 
     }
 
+
     /**
-     * register.
-     *
-     * @author    eonflux
-     * @var        object    $data)
+     * @param array $data
      */
     public static function activate(array $data)
     {
