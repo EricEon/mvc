@@ -15,7 +15,7 @@ class AuthController
     }
 
     /**
-     * register.
+     * register. Registers the user.
      *
      * @author    Unknown
      * @author    eonflux
@@ -364,6 +364,17 @@ class AuthController
 
     }
 
+    /**
+     * login.Returns true or false if credentials are not found in the database.
+     *
+     * @author    eonflux
+     * @since    v0.0.1
+     * @version    v1.0.0    Wednesday, March 6th, 2019.
+     * @access    public static
+     * @param    string    $table
+     * @param    array     $data
+     * @return    void
+     */
     public static function login(String $table, array $data)
     {
         $connect = Connector::connect();
@@ -389,14 +400,14 @@ class AuthController
             var_dump($count);
             if ($count > 0) {
                 if (!password_verify($password, $password_confirm)) {
-                    Session::create('warning','Check Password!!');
+                    Session::create('warning', 'Check Password!!');
                     return redirect('/');
-                    
+
                 }
-                
+
                 return $count;
             }
-            Session::create('warning','Check Email!!');
+            Session::create('warning', 'Check Email!!');
             return redirect('/');
 
         } catch (\PDOException $th) {
