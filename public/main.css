@@ -93,3 +93,24 @@ input:focus{
     background-color: #f8f191;
     color: rgb(109, 121, 1);
 }
+.danger{
+    color: rgb(211, 8, 8);
+}
+.success{
+    color: rgb(7, 204, 7);
+}
+.info{
+    color: rgb(4, 126, 207);
+}
+.warning{
+    color: rgb(196, 218, 2);
+}
+
+table{
+    padding: 1.2rem;
+    margin: auto;
+}
+td,th{
+    padding: 0.6rem;
+    text-align: center;
+}

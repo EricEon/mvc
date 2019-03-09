@@ -390,14 +390,14 @@ class AuthController
         }
         try {
             $sql = "SELECT `password` FROM $table WHERE email=:email";
-            var_dump($sql);
+            //var_dump($sql);
             $user = $connect->prepare($sql);
-            var_dump($user);
+            //var_dump($user);
             $user->execute(["email" => $email]);
             $password_confirm = $user->fetchColumn();
             //dd($password_confirm);
             $count = $user->rowCount();
-            var_dump($count);
+            //var_dump($count);
             if ($count > 0) {
                 if (!password_verify($password, $password_confirm)) {
                     Session::create('warning', 'Check Password!!');
