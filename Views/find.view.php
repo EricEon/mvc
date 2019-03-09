@@ -27,7 +27,7 @@ use Flux\Core\Helpers\Session;
                     <td><?=$user['email']?></td>
                     <td>
                     <?php 
-                    if($user['activation_confirm'] === 0): 
+                    if(intval($user['activation_confirm']) === 0): 
                     ?>
                     <i class="fas fa-times danger"></i>
                     <?php else: ?>
