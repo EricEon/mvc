@@ -85,6 +85,7 @@ class Router
                     ...explode('@', $callMethod)
 
                 );
+                echo "True";
             } else {
                 foreach (self::$routes[$method] as $key => $val) {
                     $pattern = preg_replace('#\(/\)#', '/?', $key);
@@ -111,7 +112,7 @@ class Router
                     }
                 }
             } //code...
-        } catch (\Exception $th) {
+        } catch (\Throwable $th) {
             $th->getMessage();
             //throw new \Exception('No route defined for this URI.');
         }

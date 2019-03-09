@@ -2,8 +2,9 @@
 namespace Flux\Controller;
 
 use Flux\Core\Helpers\Session;
+use Flux\Controller\Controller;
 
-class SiteController
+class SiteController extends Controller
 {
     public function index()
     {
@@ -23,5 +24,16 @@ class SiteController
     public function dashboard()
     {
         return view('dashboard');
+    }
+
+    public function where()
+    {
+        $where = $this->db->table('users')->where('id','=',117);
+        //dd($where);
+        if(empty($where)){
+            Session::create('warning','Row does not exist in database');
+            return redirect('/');
+        }
+        return view('find',$where);
     }
 }
