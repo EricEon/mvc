@@ -19,11 +19,13 @@ class LoginController
         // return redirect('/');
     }
 
-    public function logout()
-    {
-        if (session_status() == PHP_SESSION_ACTIVE) {
-            session_destroy();
-        }
-        return redirect('/');
-    }
+    // public function logout()
+    // {
+    //     if (session_status() == PHP_SESSION_ACTIVE) {
+    //         session_destroy();
+    //         setcookie('email')
+    //         unset($_COOKIE['email']);
+    //     }
+    //     return redirect('/');
+    // }
 }

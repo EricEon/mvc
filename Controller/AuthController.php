@@ -398,7 +398,7 @@ class AuthController
                     return redirect('/');
 
                 }
-                setcookie('email',$email,time()+3600);
+                setcookie('loggedIn','true',time()+3600);
                 return $count;
             }
             Session::create('warning', 'Check Email!!');
@@ -409,5 +409,18 @@ class AuthController
         }
 
     }
+
+    public static function logout()
+    {
+      if (session_status() == PHP_SESSION_ACTIVE) {
+        session_destroy();
+        setcookie('loggedIn','true',1);
+        //setcookie('email');
+        // unset($_SESSION['PHPSESSID']);
+        // unset($_COOKIE['email']);
+        //return redirect('/');
+      }
+      return redirect('/');
+      }
 
 }

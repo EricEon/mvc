@@ -53,7 +53,7 @@ function serverName(){
 }
 
 function isLoggedIn(){
-    if(isset($_COOKIE['email'])){
+    if(isset($_COOKIE['loggedIn']) ){
         return true;
     }
     return false;
