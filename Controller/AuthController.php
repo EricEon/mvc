@@ -9,10 +9,6 @@ use Flux\Core\Http\Request;
 
 class AuthController
 {
-    public function __construct()
-    {
-        $this->session = new Session();
-    }
 
     /**
      * register. Registers the user.
@@ -402,7 +398,7 @@ class AuthController
                     return redirect('/');
 
                 }
-
+                setcookie('email',$email,time()+3600);
                 return $count;
             }
             Session::create('warning', 'Check Email!!');

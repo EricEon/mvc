@@ -51,3 +51,10 @@ function serverName(){
     $serverName = $_SERVER['SERVER_NAME'];
     echo $serverName;
 }
+
+function isLoggedIn(){
+    if(isset($_COOKIE['email'])){
+        return true;
+    }
+    return false;
+}

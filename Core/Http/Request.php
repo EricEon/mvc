@@ -32,24 +32,26 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
+    
     /**
-     * all. Returns array of data from a form.
+     * all.
      *
-     * @author    eonflux
-     * @since    v0.0.1
-     * @version    v1.0.0    Wednesday, March 6th, 2019.
-     * @access    public static
-     * @return    void
+     * @author	eonflux
+     * @since	v0.0.1
+     * @version	v1.0.0	Wednesday, March 13th, 2019.
+     * @access	public static
+     * @return	mixed
      */
     public static function all()
     {
-        if (isset($_POST['submit'])) {
-            $post = $_POST;
-            unset($post['submit']);
-            return $post;
+        if (!isset($_POST['submit'])) {
+            echo "No Data";
+            exit;
         }
-        echo "No Data";
-        exit;
+        $post = $_POST;
+        unset($post['submit']);
+        return $post;
+
     }
 
     /**

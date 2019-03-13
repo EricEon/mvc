@@ -9,9 +9,11 @@
 <body>
 <nav class="navigation">
     <ul class="nav-list">
+    <?php if(!isLoggedIn()):?>
         <li class="nav-item"><a href="/">Login</a></li>
         <li class="nav-item"><a href="/register">Register</a></li>
-        <?php if (Request::is('/dashboard')): ?>
+    <?php endif;?>
+        <?php if (isLoggedIn()): ?>
             <form action="/logout" method="post" style="padding: 0;margin:0;">
             <input type="submit" value="Logout" name="submit" style="padding: 0;margin:0;">
             </form>
