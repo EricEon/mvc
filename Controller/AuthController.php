@@ -410,6 +410,15 @@ class AuthController
 
     }
 
+    /**
+     * logout.
+     *
+     * @author	eonflux
+     * @since	v0.0.1
+     * @version	v1.0.0	Wednesday, March 13th, 2019.
+     * @access	public static
+     * @return	mixed
+     */
     public static function logout()
     {
       if (session_status() == PHP_SESSION_ACTIVE) {
@@ -419,8 +428,9 @@ class AuthController
         // unset($_SESSION['PHPSESSID']);
         // unset($_COOKIE['email']);
         //return redirect('/');
+        return true;
       }
-      return redirect('/');
+      // return redirect('/');
       }
 
 }

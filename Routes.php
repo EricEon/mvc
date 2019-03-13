@@ -12,4 +12,4 @@ Router::get('/where','SiteController@where');
 Router::post('/register','RegistrationController@register');
 Router::post('/activate','ActivationController@activate');
 Router::post('/login','LoginController@login');
-Router::post('/logout','AuthController@logout');
+Router::post('/logout','LoginController@logout');

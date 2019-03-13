@@ -52,6 +52,15 @@ function serverName(){
     echo $serverName;
 }
 
+/**
+ * isLoggedIn.
+ *
+ * @author	eonflux
+ * @since	v0.0.1
+ * @version	v1.0.0	Wednesday, March 13th, 2019.
+ * @global
+ * @return	boolean
+ */
 function isLoggedIn(){
     if(isset($_COOKIE['loggedIn']) ){
         return true;
