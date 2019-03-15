@@ -1,7 +1,7 @@
 @Todo:☐ Additions
     ✔ Add the zend opcache and session functions. @done(19-02-07 15:50)
     ✔ Implement a notification. @done(19-02-07 19:14)
-    ☐ Add a login checker function(global)
+    ✔ Add a login checker function(global) @done(19-03-15 20:43)
     ☐ Refactor
         ✔ Refactor the router to allow use of named variables in Route uri. @done(19-03-01 12:53)
         ☐ Create a trait or an abstract class for QueryBuilder.php.
