@@ -2,6 +2,10 @@
 
 namespace Flux\Core\Database;
 
+use Flux\Helpers\FileLogger;
+use Flux\Core\Helpers\Session;
+
+
 class Connector
 {
 
@@ -27,9 +31,9 @@ class Connector
 
         } catch (\PDOException $e) {
             //Send a generic message to the user
-            echo $e->getMessage();
-
-            //Logger::write($e->getMessage());
+            // echo $e->getMessage();
+            Session::create('warning',$e->getMessage());
+            FileLogger::debug($e->getMessage());
         }
     }
 

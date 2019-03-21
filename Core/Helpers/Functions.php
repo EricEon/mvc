@@ -1,14 +1,6 @@
 <?php
 
 /**
- * Die and dump data passed to the function
- * @param $data
- */
-function dd($data){
-    die(var_dump($data));
-}
-
-/**
  * The view that is shown to the user.
  * @param String $file
  */
@@ -16,18 +8,6 @@ function view(String $file, $data = [])
 {
     extract($data);
     require "./Views/" .$file. ".view.php";
-}
-
-/**
- * Send the mail for activating a registered account
- * @param String $from
- * @param String $to
- * @param String $subject
- * @param String $activation_code
- */
-function mailActivation(String $to, String $subject, String $message){
-
-    mail($to,$subject,$message);
 }
 
 /**Redirects to a specified page

@@ -2,9 +2,16 @@
     ✔ Add the zend opcache and session functions. @done(19-02-07 15:50)
     ✔ Implement a notification. @done(19-02-07 19:14)
     ✔ Add a login checker function(global) @done(19-03-15 20:43)
+    ✔ Add phpmailer and  @done(19-03-16 23:43)
+    ✔ Add symfony var-dumper @done(19-03-16 23:43)
+    ✔ Create a logger interface with static methods for work. @done(19-03-18 21:13)
+    ☐ Research symfony event dispatcher
+
+    
     ☐ Refactor
-        ✔ Refactor the router to allow use of named variables in Route uri. @done(19-03-01 12:53)
-        ☐ Create a trait or an abstract class for QueryBuilder.php.
-        ☐ Create Models where needed that implement their own version of QueryBuilder.
-        ✔ Create a session class. @done(19-02-07 19:14)
-        ☐ Refactor the session class.
+    ☐ Create a trait or an abstract class for QueryBuilder.php.
+    ☐ Create Models where needed that implement their own version of QueryBuilder.
+    ☐ Refactor the Authentication controller with validation.
+    ☐ Refactor the mail class.
+    ✔ Create a session class. @done(19-02-07 19:14)
+    ✔ Refactor the router to allow use of named variables in Route uri. @done(19-03-01 12:53)

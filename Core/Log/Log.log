@@ -1,0 +1,5 @@
+2019-03-20 12:27:30 ERROR :: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'rasengan501@gmail.com' for key 'email'
+2019-03-21 11:54:40 ERROR :: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'masu@world-travel.online' for key 'email'
+2019-03-21 11:55:17 ERROR :: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'masu@world-travel.online' for key 'email'
+2019-03-21 12:01:24 INFO :: Email and Activation code not valid
+2019-03-21 12:02:27 INFO :: Email and Activation code not valid

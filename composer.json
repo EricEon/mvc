@@ -17,6 +17,8 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "vlucas/phpdotenv": "^3.3@dev"
+        "vlucas/phpdotenv": "^3.3@dev",
+        "phpmailer/phpmailer": "dev-master",
+        "symfony/var-dumper": "^4.3@dev"
     }
 }

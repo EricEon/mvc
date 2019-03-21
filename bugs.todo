@@ -1,0 +1,3 @@
+☐ Ensure that the mail and db env settings has been set before starting.
+☐ Show error for duplicate entry in database.
+☐ Validation errors are not visible to user but logged in filelogger.

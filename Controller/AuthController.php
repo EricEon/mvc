@@ -6,6 +6,7 @@ use Flux\Core\Database\Connector;
 use Flux\Core\Helpers\Mailer;
 use Flux\Core\Helpers\Session;
 use Flux\Core\Http\Request;
+use Flux\Helpers\FileLogger;
 
 class AuthController
 {
@@ -26,15 +27,15 @@ class AuthController
     public static function register(String $table, array $data)
     {
         $connect = Connector::connect();
-        $keys = [];
+        $keys    = [];
         // $values = [];
-        $prepKey = "";
-        $prepVal = array();
+        $prepKey    = "";
+        $prepVal    = array();
         $serverName = Request::host();
         //$header = ["FROM" => "no-reply@loginoo.test"];
 
-        $email = $data['email'];
-        $name = $data['name'];
+        $email  = $data['email'];
+        $name   = $data['name'];
         $header = 'MIME-Version: 1.0' . "\r\n";
         $header .= 'Content-type: text/html' . "\r\n";
         //$header[] = 'MIME-Version: 1.0';
@@ -52,7 +53,7 @@ class AuthController
          */
         if (array_key_exists('password_confirm', $data)) {
             if ($data['password'] === $data['password_confirm']) {
-                $pass = $data['password'];
+                $pass            = $data['password'];
                 $activation_code = hash('sha512', $data['name']);
                 unset($data['password']);
                 unset($data['password_confirm']);
@@ -68,15 +69,15 @@ class AuthController
          */
         foreach ($data as $key => $value) {
             $keys[] = $key;
-            $values[] = $value;
-            $prepKey = ":" . $key; //$prepKey is a variable that stores strings
+            //$values[] = $value;
+            $prepKey           = ":" . $key; //$prepKey is a variable that stores strings
             $prepVal[$prepKey] = $value;
         }
         /**
          * Use implode not list to separate the array values into a string with a glue string joining them.
          */
         $columns = implode(",", $keys);
-        $params = ":" . implode(",:", $keys);
+        $params  = ":" . implode(",:", $keys);
 
         /**
          * Resulting sql string should contain pdo named placeholder for values and normal string for the columns.
@@ -92,7 +93,7 @@ class AuthController
         }
         try {
             $create = $prep->execute();
-
+            //die(dump($create));
             $message = "
             <!DOCTYPE HTML PUBLIC '-//W3C//DTD XHTML 1.0 Transitional //EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
             <html xmlns='http://www.w3.org/1999/xhtml' xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office'>
@@ -309,27 +310,30 @@ class AuthController
             </html>
             ";
 
-            Mailer::send($email, "Click the button below to activate your account", $message, $header);
-            return $create;
+            $mail = Mailer::send($email, "Click the button below to activate your account", $message, $header);
+            if ($mail) {
+                Session::create('success', 'ACTIVATION MAIL SENT, CHECK YOUR INBOX');
+                return $create;
+              }
         } catch (\Throwable $th) {
+            FileLogger::error($th->getMessage());
             Session::create('danger', 'Unsuccessful Registration!!');
         }
 
     }
-
 
     /**
      * @param array $data
      */
     public static function activate(array $data)
     {
-        $email = $data['email'];
+        $email           = $data['email'];
         $activation_code = $data['activation_code'];
-        $connect = Connector::connect();
+        $connect         = Connector::connect();
 
         try {
             $sql = "SELECT id  FROM users WHERE email=:email AND activation_code=:activation_code";
-            var_dump($sql);
+            //dump($sql);
 
             $user = $connect->prepare($sql);
             //var_dump($user);
@@ -337,22 +341,24 @@ class AuthController
             $count = $user->rowCount();
             //dd($count);
             if ($count > 0) {
-                $sql = "UPDATE users SET activation_confirm=1, activation_code=0 WHERE email=:email";
+                $sql  = "UPDATE users SET activation_confirm=1, activation_code=0 WHERE email=:email";
                 $user = $connect->prepare($sql);
                 //var_dump($user);
                 $user->execute(["email" => $email]);
-                $count = $user->rowCount();
+                $result = $user->rowCount();
                 //dd($count);
-                if ($count > 0) {
+                if ($result > 0) {
                     Session::create('success', 'You can now login to your account');
                     redirect('/');
                 }
             } else {
-                Session::create('danger', 'Unsuccessful Activation!!');
+                Session::create('info', 'Email and Activation code not valid!!!!!');
+                FileLogger::info("Email and Activation code not valid");
             }
 
         } catch (\Throwable $th) {
             //throw $th;
+            FileLogger::info($th->getMessage());
             Session::create('danger', 'Unsuccessful Activation!!');
         }
 
@@ -371,8 +377,8 @@ class AuthController
      */
     public static function login(String $table, array $data)
     {
-        $connect = Connector::connect();
-        $email = $data['email'];
+        $connect  = Connector::connect();
+        $email    = $data['email'];
         $password = $data['password'];
 
         if (!is_string($table)) {
@@ -398,7 +404,7 @@ class AuthController
                     return redirect('/');
 
                 }
-                setcookie('loggedIn','true',time()+3600);
+                setcookie('loggedIn', 'true', time() + 3600);
                 return $count;
             }
             Session::create('warning', 'Check Email!!');
@@ -413,24 +419,24 @@ class AuthController
     /**
      * logout.
      *
-     * @author	eonflux
-     * @since	v0.0.1
-     * @version	v1.0.0	Wednesday, March 13th, 2019.
-     * @access	public static
-     * @return	mixed
+     * @author    eonflux
+     * @since    v0.0.1
+     * @version    v1.0.0    Wednesday, March 13th, 2019.
+     * @access    public static
+     * @return    mixed
      */
     public static function logout()
     {
-      if (session_status() == PHP_SESSION_ACTIVE) {
-        session_destroy();
-        setcookie('loggedIn','true',1);
-        //setcookie('email');
-        // unset($_SESSION['PHPSESSID']);
-        // unset($_COOKIE['email']);
-        //return redirect('/');
-        return true;
-      }
-      // return redirect('/');
-      }
+        if (session_status() == PHP_SESSION_ACTIVE) {
+            session_destroy();
+            setcookie('loggedIn', 'true', 1);
+            //setcookie('email');
+            // unset($_SESSION['PHPSESSID']);
+            // unset($_COOKIE['email']);
+            //return redirect('/');
+            return true;
+        }
+        // return redirect('/');
+    }
 
 }
