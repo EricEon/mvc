@@ -3,3 +3,8 @@
 2019-03-21 11:55:17 ERROR :: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'masu@world-travel.online' for key 'email'
 2019-03-21 12:01:24 INFO :: Email and Activation code not valid
 2019-03-21 12:02:27 INFO :: Email and Activation code not valid
+2023-05-15 14:49:13 DEBUG :: could not find driver
+2023-05-15 14:51:07 DEBUG :: could not find driver
+2023-05-15 14:51:10 DEBUG :: could not find driver
+2023-05-15 14:56:01 DEBUG :: could not find driver
+2023-05-15 15:01:09 DEBUG :: could not find driver
